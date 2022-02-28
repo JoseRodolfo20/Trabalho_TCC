@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { 
     Container,
     InputArea,
@@ -17,6 +17,22 @@ import EmailIcon from '../../assets/email.svg'
 import CadeadoIcon from '../../assets/cadeado.svg'
 
 export default () => {
+
+    const navigation = useNavigation()
+
+    const [emailField, setEmailField] = useState('')
+    const [passwordField, setPasswordField] = useState('')
+
+    const handleSignClick = () => {
+
+    }
+
+    const handleMessageButtonClick = () => {
+        navigation.reset({
+            routes: [{name: 'SignUp'}]
+        })
+    }
+
     return(
         <Container>
             <Logo width="100%" height="160"/>
@@ -25,20 +41,25 @@ export default () => {
             <SignInput 
                 IconSvg={EmailIcon}
                 placeholder="Digite seu e-mail"
+                value={emailField}
+                onChangeText={t=>setEmailField(t)}
             />
 
             <SignInput 
                 IconSvg={CadeadoIcon}
                 placeholder="Digite sua senha"
+                value={passwordField}
+                onChangeText={t=>setPasswordField(t)}
+                password={true}
             />
             
 
-            <CustomButton>
+            <CustomButton onPress={handleSignClick}>
                 <CustomButtonText>Login</CustomButtonText>
             </CustomButton>
         </InputArea>
 
-        <SignMessageButton>
+        <SignMessageButton onPress={handleMessageButtonClick}>
             <SignMessageButtonText>Ainda não possuí uma conta?</SignMessageButtonText>
             <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
         </SignMessageButton>
