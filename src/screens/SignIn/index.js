@@ -35,6 +35,10 @@ export default () => {
 
     return(
         <Container>
+         <SignMessageButton onPress={handleMessageButtonClick}>
+            <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
+        </SignMessageButton>
+
             <Logo width="100%" height="160"/>
 
         <InputArea>
@@ -55,14 +59,11 @@ export default () => {
             
 
             <CustomButton onPress={handleSignClick}>
-                <CustomButtonText>LOGIN</CustomButtonText>
+                <CustomButtonText>ENTRAR</CustomButtonText>
             </CustomButton>
         </InputArea>
 
-        <SignMessageButton onPress={handleMessageButtonClick}>
-            <SignMessageButtonText>Ainda não possuí uma conta?</SignMessageButtonText>
-            <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
-        </SignMessageButton>
+        
 
         </Container>
     )
