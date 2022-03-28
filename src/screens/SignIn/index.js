@@ -3,10 +3,11 @@ import { useNavigation } from "@react-navigation/native";
 import { 
     Container,
     InputArea,
+    PasswordRecovText,
     CustomButton,
     CustomButtonText,
+    CustomButtonRecov,
     SignMessageButton,
-    SignMessageButtonText,
     SignMessageButtonTextBold
  } from './styles'
 
@@ -56,11 +57,15 @@ export default () => {
                 onChangeText={t=>setPasswordField(t)}
                 password={true}
             />
-            
 
+            <CustomButtonRecov onPress={handleSignClick}>
+                <PasswordRecovText>Recuperar senha</PasswordRecovText>
+            </CustomButtonRecov>
+            
             <CustomButton onPress={handleSignClick}>
                 <CustomButtonText>ENTRAR</CustomButtonText>
             </CustomButton>
+
         </InputArea>
 
         

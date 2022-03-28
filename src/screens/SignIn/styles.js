@@ -25,6 +25,20 @@ export const SignMessageButtonTextBold = styled.Text`
     text-transform: uppercase;
 `;
 
+export const CustomButtonRecov = styled.TouchableOpacity`
+    left: 80px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+`;
+
+export const PasswordRecovText = styled.Text`
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+`;
+
 export const InputArea = styled.View`
     width: 100%;
     padding: 30px;

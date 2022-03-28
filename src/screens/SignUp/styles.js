@@ -42,7 +42,7 @@ export const CustomButton = styled.TouchableOpacity`
 
 `;
 export const CustomButtonText = styled.Text`
-    font-size: 18px;
+    font-size: 22px;
     color: #fff;
     font-weight: bold;
 `;
