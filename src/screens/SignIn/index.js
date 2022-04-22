@@ -25,7 +25,9 @@ export default () => {
     const [passwordField, setPasswordField] = useState('')
 
     const handleSignClick = () => {
-
+        navigation.reset({
+            routes: [{name: 'MainTab'}]
+        })
     }
 
     const handleMessageButtonClick = () => {
@@ -67,8 +69,6 @@ export default () => {
             </CustomButton>
 
         </InputArea>
-
-        
 
         </Container>
     )
