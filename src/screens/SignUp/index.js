@@ -6,7 +6,6 @@ import {
     CustomButton,
     CustomButtonText,
     SignMessageButton,
-    SignMessageButtonText,
     SignMessageButtonTextBold
  } from './styles'
 

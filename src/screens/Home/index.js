@@ -1,5 +1,6 @@
 import react from "react";
 import { useNavigation } from "@react-navigation/native";
+import Lp from '../../components/FlatList'
 import { 
     Container,
     Scroller,
@@ -20,14 +21,17 @@ export default () => {
         <Container>
             <Scroller>
 
-                <HeaderArea>
-                    <HeaderTitle numberOfLines={2}>Encontre o melhor profissional</HeaderTitle>
-                    <SearchButton onPress={() => navigation.navigate('Search')}>
-                        <SearchIcon width="26" height="26" fill="#ffffff"/>
-                    </SearchButton>
-                </HeaderArea>
+                    <HeaderArea>
+                        <HeaderTitle numberOfLines={2}>Encontre o melhor profissional</HeaderTitle>
+                        <SearchButton onPress={() => navigation.navigate('Search')}>
+                            <SearchIcon width="26" height="26" fill="#ffffff"/>
+                        </SearchButton>
+                    </HeaderArea>
 
+                    <Lp/>
+                    
             </Scroller>
+            
         </Container>
     )
 }

@@ -29,13 +29,13 @@ export const SearchButton = styled.TouchableOpacity`
     height: 26px;
 `;
 
+export const List = styled.View`
+    border: none;
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 10%;
+    background-color: #3b8952;
+    color: #ffffff;
+`;
 
-    // Scroller,
-
-    // HeaderArea,
-    // HeaderTitle,
-    // SearchButton,
-
-    // LocationArea,
-    // LocationInput,
-    // LocationFinder,
+    

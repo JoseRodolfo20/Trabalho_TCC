@@ -1,5 +1,6 @@
 import react from "react";
 import { Text } from "react-native";
+import Lp from '../../components/FlatList'
 import{ 
     Container,
     Scroller,
@@ -18,12 +19,14 @@ export default () => {
                     <SearchInput 
                         placeholder="Pesquise Aqui"
                         placeholderTextColor="#FFFFFF"
-
                     />
                     <SearchButton>
                         <SearchIcon width="26" height="26" fill="#FFFFFF"/>
                     </SearchButton>
                 </SearchArea>
+
+                <Lp/>
+
             </Scroller>
         </Container>
     )
