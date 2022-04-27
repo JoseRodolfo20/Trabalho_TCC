@@ -1,11 +1,25 @@
 import react from "react";
 import { Text } from "react-native";
-import{ Container } from './styles'
+import Lp from '../../components/FlatList'
+import{ 
+    Container,
+    Scroller,
+
+    HeaderArea,
+    HeaderTitle
+ } from './styles'
 
 export default () => {
     return(
         <Container>
-            <Text>Favorites</Text>
+            <Scroller>
+                <HeaderArea>
+                    <HeaderTitle>Favoritos</HeaderTitle>
+                </HeaderArea>
+
+                <Lp/>
+
+            </Scroller>     
         </Container>
     )
 }

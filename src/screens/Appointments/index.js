@@ -5,7 +5,6 @@ import{ Container } from './styles'
 export default () => {
     return(
         <Container>
-            <Text>Appointments</Text>
         </Container>
     )
 }
