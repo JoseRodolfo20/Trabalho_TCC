@@ -1,5 +1,6 @@
-import react from "react";
+import react, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { RefreshControl } from "react-native";
 import Lp from '../../components/FlatList'
 import { 
     Container,
@@ -17,9 +18,18 @@ export default () => {
 
     const navigation = useNavigation()
 
+    const [refreshing, setRefreshing] = useState(false)
+
+    const onRefresh = () => {
+        setRefreshing(false)
+
+    }
+
     return(
         <Container>
-            <Scroller>
+            <Scroller refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>
+            }>
 
                     <HeaderArea>
                         <HeaderTitle numberOfLines={2}>Encontre o melhor profissional</HeaderTitle>
