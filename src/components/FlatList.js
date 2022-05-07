@@ -12,6 +12,7 @@ const SeeProfileButton =  styled.View`
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 `;
 
 const SeeProfileButtonText = styled.Text`
@@ -25,6 +26,7 @@ function Item({ item }) {
 
     const handleClick = () => {
       navigation.navigate('Profissional', {
+        id: item.id,
         name: item.name,
         photo: item.photo,
         location: item.location,
@@ -33,19 +35,19 @@ function Item({ item }) {
     }
 
     return (
-      <View style={styles.listItem} >
-        <Image source={{}}  style={{width:60, height:60,borderRadius:30}} />
-        <View style={{alignItems:"center",flex:1}}>
-          <Text style={{fontWeight:"bold"}}>{item.name}</Text>
-          <Text>{item.position}</Text>
-          <Stars starts={item.stars} showNumber={true}  />
+      <TouchableOpacity onPress={handleClick} >
+        <View style={styles.listItem} >
+          <Image source={{uri: item.photo}}  style={{width:88, height:88,borderRadius:30}} />
+          <View style={{alignItems:"center",flex:1, justifyContent: "space-between"}}>
+            <Text style={{fontWeight:"bold"}}>{item.name}</Text>
+            <Text>{item.location}</Text>
+            <Stars stars={item.stars} showNumber={true}  />
+            <SeeProfileButton >
+              <SeeProfileButtonText>Ver Perfil</SeeProfileButtonText>
+            </SeeProfileButton>
+          </View>
         </View>
-        <TouchableOpacity onPress={handleClick} style={{height:70,width:50, justifyContent:"center",alignItems:"center"}}>
-          <SeeProfileButton>
-            <SeeProfileButtonText>Ver Perfil</SeeProfileButtonText>
-          </SeeProfileButton>
-        </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
     );
   }
 
@@ -53,9 +55,9 @@ export default class List extends React.Component {
     state = {
       data:[
           {
-              "name": "",
-              "location": "",
-              "photo": "",
+              "name": "José Rodolfo",
+              "location": "Pouso Alegre - MG",
+              "photo": "https://w7.pngwing.com/pngs/850/257/png-transparent-goku-chi-chi-gohan-goten-trunks-goku-face-computer-wallpaper-head.png",
           },
           {
               "name": "",

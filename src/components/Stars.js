@@ -39,7 +39,6 @@ export default ({ stars, showNumber }) => {
                     {i === 1 && <StarHalf  width="18"  height="18"  fill="#FF9200"/>}
                     {i === 2 && <StarFull  width="18"  height="18"  fill="#FF9200"/>}
                 </StarView>
-
             ))}
             {showNumber && <StarText>{stars}</StarText>}
         </StarArea>
