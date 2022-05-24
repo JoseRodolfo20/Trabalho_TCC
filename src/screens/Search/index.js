@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState, useEffect } from "react";
 import { Text } from "react-native";
 import{ 
     Container,
@@ -8,9 +8,30 @@ import{
     SearchButton
 } from './styles'
 
+import Api from "../../../Api";
+
 import SearchIcon from '../../assets/search.svg'
 
 export default () => {
+
+    // const[list, setList] = useState([])
+
+    // const getProf = async () => {
+    //     setLoading(true)
+    //     setList([])
+
+    //     let res = await Api.getProf()
+    //     console.log(res.error)
+        
+    //         setList(res)
+        
+    //     setLoading(false)
+    // }
+
+    // useEffect(() => {
+    //     getProf()
+    // }, []);
+
     return(
         <Container>
             <Scroller>
@@ -24,7 +45,11 @@ export default () => {
                     </SearchButton>
                 </SearchArea>
 
-                
+                {/* <ListArea>
+                        {list.map((item, k)=>(
+                            <List key={k} Array={item}/>
+                        ))}
+                </ListArea> */}
 
             </Scroller>
         </Container>

@@ -46,24 +46,23 @@ import{
 
 } from './styles'
 
+import Api from "../../../Api";
+
 export default () => {
     const navigation = useNavigation()
     const route = useRoute()
 
     const [userInfo, setUserInfo] = useState({
         id: route.params.id,
-        name: route.params.name,
-        photo: route.params.photo,
-        location: route.params.location,
+        nome: route.params.nome,
+        fotoUsuario: route.params.fotoUsuario,
+        endereco: route.params.endereco,
         stars: route.params.stars
     })
 
     const [loading, setLoading] = useState(false)
     const [favorited, setFavorited] = useState(false)
 
-    useEffect(() => {
-
-    }, [])
 
     const handleBackButton = () => {
         navigation.goBack()
@@ -96,10 +95,10 @@ export default () => {
                 }
                 <PageBody>
                     <UserInfoArea>
-                        <UserAvatar source={{uri: userInfo.photo}} />
+                        <UserAvatar source={{uri: userInfo.fotoUsuario}} />
                         <UserInfo>
-                            <UserInfoName>{userInfo.name}</UserInfoName>
-                            <UserLocation>{userInfo.location}</UserLocation>
+                            <UserInfoName>{userInfo.nome}</UserInfoName>
+                            <UserLocation>{userInfo.endereco}</UserLocation>
                             <Stars stars={userInfo.stars} showNumber={true} />
                         </UserInfo>
                         <UserFavButton onPress={handleFavClick}>

@@ -7,8 +7,9 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const InfoUser =  styled.View`
-    flex-direction: row;
-    margin-top: -30px;
+    
+    margin-left: 20px;
+    justify-content: space-between;
 `;
 
 export const UserAvatar =  styled.Image`
@@ -24,7 +25,36 @@ export const UserAvatar =  styled.Image`
 `;
 
 export const UserName = styled.View`
+    width: 55%;
+    height: 10%;
+    top: -35%;
+    margin-left: 40%;
+    font-size: 10px;
+    color: #ffffff;
+    border: 3px solid red;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
 
+`;
+
+export const SignEditProfile = styled.TouchableOpacity`
+    height: 35px;
+    padding: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 90%;
+    margin-left: 40px;
+`;
+
+export const EditProfile = styled.Text`
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
 `;
 
 export const CustomButton = styled.TouchableOpacity`
@@ -33,12 +63,7 @@ export const CustomButton = styled.TouchableOpacity`
     border-radius: 15px;
     justify-content: center;
     align-items: center;
-    margin-top:40px;
+    margin-top:10px;
     width: 60px;
     margin-left: 80%;
 `;
-// export const CustomButtonText = styled.View`
-//     font-size: 18px;
-//     color: #fff;
-//     font-weight: bold;
-// `;

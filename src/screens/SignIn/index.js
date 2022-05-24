@@ -11,6 +11,8 @@ import {
     SignMessageButtonTextBold
  } from './styles'
 
+import Api from "../../../Api";
+
 import SignInput from "../../components/SignInput";
 
 import Logo from '../../assets/regardian.svg'
@@ -24,10 +26,20 @@ export default () => {
     const [emailField, setEmailField] = useState('')
     const [passwordField, setPasswordField] = useState('')
 
-    const handleSignClick = () => {
-        navigation.reset({
-            routes: [{name: 'MainTab'}]
-        })
+    const handleSignClick = async () => {
+        if(emailField != '' && passwordField != ''){
+
+            let json = await Api.signIn(emailField, passwordField)
+            console.log(json)
+            if(json.token){
+                alert('Deu Certo!')
+            }else{
+                alert('Email e/ou senha errados!')
+            }
+
+        }else{
+            alert('Preencha os Campos!')
+        }
     }
 
     const handleMessageButtonClick = () => {

@@ -9,6 +9,8 @@ import {
     SignMessageButtonTextBold
  } from './styles'
 
+import Api from "../../../Api";
+
 import SignInput from "../../components/SignInput";
 
 import Logo from '../../assets/regardian.svg'

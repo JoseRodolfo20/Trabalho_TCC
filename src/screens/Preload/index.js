@@ -10,15 +10,15 @@ export default () => {
     const navigation = useNavigation()
 
     useEffect(() => {
-        // const checkToken = async () => {
-        //     const token = await AsyncStorage.getItem('token');
-        //     if(token){
-
-        //     }else{
+        const checkToken = async () => {
+            const token = await AsyncStorage.getItem('token');
+            if(token !== null){
+                //validar o token
+            }else{
                 navigation.navigate('SignIn')
-        //     }
-        // }
-        // checkToken();
+            }
+        }
+        checkToken();
     }, [])
 
     return(

@@ -50,7 +50,7 @@ export const PageBody = styled.View`
 
 export const UserInfoArea =  styled.View`
     flex-direction: row;
-    margin-top: -30px;
+    margin-top: -20px;
 `;
 
 export const UserAvatar =  styled.Image`
@@ -71,13 +71,16 @@ export const UserInfo =  styled.View`
 
 export const UserInfoName =  styled.Text`
     color: #000000;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    
 `;
 
 export const UserLocation = styled.Text`
     color: #000000;
+    margin-top: 3px;
+    font-size: 12px;
 `;
 
 export const UserFavButton =  styled.TouchableOpacity`
@@ -88,7 +91,7 @@ export const UserFavButton =  styled.TouchableOpacity`
     border-radius: 20px;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-left: 20px;
     margin-right: 20px;
 `;

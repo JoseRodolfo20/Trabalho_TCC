@@ -13,8 +13,8 @@ const Area = styled.TouchableOpacity`
 `;
 
 const Photo = styled.Image`
-  width: 88px;
-  height: 88px;
+  width: 83px;
+  height: 83px;
   border-radius: 20px;
 `;
 
@@ -24,12 +24,12 @@ const InfoArea = styled.View`
 `;
 
 const UserName = styled.Text`
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
 `;
 
 const UserLocation = styled.Text`
-  font-size: 15px;
+  font-size: 10px;
   font-weight: bold;
 `;
 
@@ -47,26 +47,26 @@ const SeeProfileButtonText = styled.Text`
   color: #1c232e;
 `;
 
-export default ({data}) => {
+export default ({Array}) => {
   const navigation = useNavigation()
 
   const handleClick = () => {
     navigation.navigate('Profissional', {
-      id: data.id,
-      name: data.name,
-      photo: data.photo,
-      location: data.location,
-      stars: data.stars
+      id: Array.id,
+      nome: Array.nome,
+      fotoUsuario: Array.fotoUsuario,
+      endereco: Array.endereco,
+      stars: Array.stars
     })
   }
 
   return(
     <Area onPress={handleClick}>
-      <Photo source={{uri: data.photo}}/>
+      <Photo source={{uri: Array.fotoUsuario}}/>
       <InfoArea>
-        <UserName>{data.name}</UserName>
-        <UserLocation>{data.location}</UserLocation>
-        <Stars stars={data.stars} showNumber={true}/>       
+        <UserName>{Array.nome}</UserName>
+        <UserLocation>{Array.endereco}</UserLocation>
+        <Stars stars={Array.stars} showNumber={true}/>       
         <SeeProfileButton>
           <SeeProfileButtonText>Ver Perfil</SeeProfileButtonText>
         </SeeProfileButton>

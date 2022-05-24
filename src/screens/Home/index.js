@@ -14,7 +14,8 @@ import {
     ListArea
 } from './styles'
 
-import FlatList from '../../components/FlatList'
+import Api from "../../../Api";
+import List from '../../components/FlatList'
 import SearchIcon from '../../assets/search.svg'
 
 export default () => {
@@ -26,16 +27,14 @@ export default () => {
     const[refreshing, setRefreshing] = useState(false)
 
     const getProf = async () => {
-        // setLoading(true)
+        setLoading(true)
         setList([])
 
+        let res = await Api.getProf()
+        console.log(res.error)
         
+            setList(res)
         
-        if(res.error == ''){
-            setList(res.data)
-        }else{
-            alert('Erro: ' + res.error)
-        }
         setLoading(false)
     }
 
@@ -44,7 +43,7 @@ export default () => {
     }, []);
 
     const onRefresh = () => {
-        setRefreshing(false)
+        setRefreshing(true)
         getProf()
     }
 
@@ -67,7 +66,7 @@ export default () => {
 
                     <ListArea>
                         {list.map((item, k)=>(
-                            <FlatList key={k} data={item}/>
+                            <List key={k} Array={item}/>
                         ))}
                     </ListArea>
 
