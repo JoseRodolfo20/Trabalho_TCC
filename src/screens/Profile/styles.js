@@ -7,7 +7,6 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const InfoUser =  styled.View`
-    
     margin-left: 20px;
     justify-content: space-between;
 `;
@@ -26,7 +25,7 @@ export const UserAvatar =  styled.Image`
 
 export const UserName = styled.View`
     width: 55%;
-    height: 10%;
+    height: 80px;
     top: -35%;
     margin-left: 40%;
     font-size: 10px;
@@ -51,6 +50,25 @@ export const SignEditProfile = styled.TouchableOpacity`
 `;
 
 export const EditProfile = styled.Text`
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+`;
+
+export const SignOfertService = styled.TouchableOpacity`
+    height: 35px;
+    padding: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 90%;
+    margin-left: 40px;
+`;
+
+export const OfertServiceText = styled.Text`
     font-size: 18px;
     color: #ffffff;
     font-weight: bold;

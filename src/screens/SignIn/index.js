@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
+import { UserContext } from "../../contexts/UserContext";
+
 import { 
     Container,
     InputArea,
@@ -20,7 +24,7 @@ import EmailIcon from '../../assets/email.svg'
 import CadeadoIcon from '../../assets/cadeado.svg'
 
 export default () => {
-
+    const { dispatch: UserDispatch } = useContext(UserContext)
     const navigation = useNavigation()
 
     const [emailField, setEmailField] = useState('')
@@ -31,14 +35,26 @@ export default () => {
 
             let json = await Api.signIn(emailField, passwordField)
             console.log(json)
-            if(json.token){
-                alert('Deu Certo!')
+            if(json.token){              
+                await AsyncStorage.setItem('token', json.token)
+
+                UserDispatch({
+                    type: 'setFotoUsuario',
+                    payload: {
+                        fotoUsuario: json.Array.fotoUsuario
+                    }
+                })
+
+                navigation.reset({
+                    routes: [{name: 'MainTab'}]
+                })
+
             }else{
                 alert('Email e/ou senha errados!')
             }
 
         }else{
-            alert('Preencha os Campos!')
+            alert('Preencha todos os campos!')
         }
     }
 

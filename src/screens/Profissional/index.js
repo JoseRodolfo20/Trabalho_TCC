@@ -122,7 +122,7 @@ export default () => {
                         {userInfo.services.map((item, key) => (
                             <ServiceItem key={key}>
                                 <ServiceInfo>
-                                    <ServiceName>{item.name}</ServiceName>
+                                    <ServiceName>{item.profissao}</ServiceName>
                                     <ServicePrice>R$ {item.price}</ServicePrice>
                                     <ServiceChooseButton>
                                         <ServiceChooseBtnText>Agendar</ServiceChooseBtnText>

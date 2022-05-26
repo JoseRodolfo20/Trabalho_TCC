@@ -16,30 +16,44 @@ export default {
         return json
     },
 
-    signIn: async (email, password) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/auth/login`, {
+    signIn: async (email, pass) => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/login`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({email, pass})
         });
         const json = await req.json()
         return json
     },
 
-    signUp: async (name, email, password) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/user`, {
+    signUp: async (nome, email, pass) => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/user`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name, email, password})
+            body: JSON.stringify({nome, email, pass})
         });
         const json = await req.json()
         return json
+    },
+
+    getSearch: async (search) => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/profissions`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'aplication/json'
+            },
+            body: JSON.stringify({search})
+        })
+        const json = await req.json()
+        return json
+        
     },
 
     getProf: async () => {
@@ -47,6 +61,12 @@ export default {
         
         const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers?token=${token}`)
         const json = await req.json()  
+        return json
+    },
+
+    getInfoUser: async () => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers`)
+        const json = await req.json()
         return json
     }
 }

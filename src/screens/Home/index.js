@@ -31,7 +31,7 @@ export default () => {
         setList([])
 
         let res = await Api.getProf()
-        console.log(res.error)
+        console.log(res)
         
             setList(res)
         
