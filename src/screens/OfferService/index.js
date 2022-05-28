@@ -6,7 +6,6 @@ import {
     HeaderTitle, 
     Scroller, 
     InputArea, 
-    InfoText,
     InputNameService,
     InputValueHourService,
     InputEnderecoService,
@@ -17,6 +16,14 @@ import {
 } from "./styles";
 
 export default () => {
+    const navigation = useNavigation()
+
+    const handleClickOffertService = () => {
+        navigation.reset({
+            routes: [{name: 'MainTab'}]
+        })
+    }
+
     return(
         <Container>
             <Scroller>
@@ -52,12 +59,12 @@ export default () => {
                         />
 
                         <InputDescriptionService 
-                            placeholder="Breve descrição do serviçor"
+                            placeholder="Restrições"
                             placeholderTextColor="#ccc"
                         />
                 </InputArea>
 
-                <OfferServiceButton>
+                <OfferServiceButton onPress={handleClickOffertService}>
                     <OfferServiceButtonText>Ofertar Serviço</OfferServiceButtonText>
                 </OfferServiceButton>
 

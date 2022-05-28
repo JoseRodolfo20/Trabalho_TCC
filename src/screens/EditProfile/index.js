@@ -42,7 +42,7 @@ export default () => {
 
     const handleEditClick = () => {
         navigation.reset({
-            routes: [{name: 'Profile'}]
+            routes: [{name: 'MainTab'}]
         })
     }
 
@@ -61,24 +61,24 @@ export default () => {
                     <SignName
                         IconSvg={ProfileIcon}
                         placeholder="Editar Nome"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#ccc"
                     />
 
                     <SignEmail 
                         IconSvg={EmailIcon}
                         placeholder="Editar Email"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#ccc"                     
                     />
 
                     <SignPassword 
                         IconSvg={CadeadoIcon}
                         placeholder="Editar Senha"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#ccc"
                     />
 
                     <SignEndereco 
                         placeholder="Editar Localização"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#ccc"
                     />
                 </InputArea>
 
