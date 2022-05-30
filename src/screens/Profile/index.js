@@ -7,6 +7,7 @@ import {
   UserAvatar,
   UserName,
   CustomButton,
+  CustomButtonText,
   SignEditProfile,
   EditProfile,
   SignOfertService,
@@ -30,12 +31,12 @@ export default ({Array}) => {
   
   const handleEditProfile = () => {
     // navigation.navigate('EditProfile', {
-        // id: Array.id,
-        // nome: Array.nome,
-        // fotoUsuario: Array.fotoUsuario,
-        // endereco: route.params.endereco,
-        // email: route.params.email,
-        // pass: route.params.pass
+    //     id: Array.id,
+    //     nome: Array.nome,
+    //     fotoUsuario: Array.fotoUsuario,
+    //     endereco: Array.params.endereco,
+    //     email: Array.params.email,
+    //     pass: Array.params.pass
     // })
     navigation.reset({
       routes: [{name: 'EditProfile'}]
@@ -49,6 +50,7 @@ export default ({Array}) => {
   }
 
   const handleLogoutClick = async() => {
+    // await Api.logout()
     navigation.reset({
       routes: [{name: 'SignIn'}]
     })
@@ -72,12 +74,12 @@ export default ({Array}) => {
     <Container>
       
       <CustomButton onPress={handleLogoutClick}>
-        <Icon name="home" size={18} color="#ffffff"/>
+        <CustomButtonText>SAIR</CustomButtonText>
       </CustomButton>
 
       <InfoUser>
         <UserAvatar /*source={{uri: Array.fotoUsuario}}*/ />
-        <UserName></UserName>
+        <UserName>José Rodofo</UserName>
       </InfoUser>
 
       <SignEditProfile onPress={handleEditProfile}>

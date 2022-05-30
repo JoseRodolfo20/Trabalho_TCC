@@ -91,7 +91,6 @@ export const InputDescriptionService = styled.TextInput`
     color: #ffffff;
     font-weight: bold;
     text-align: center;
-    /* justify-content: baseline; */
     margin-top: 30px;
 `;
 

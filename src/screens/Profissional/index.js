@@ -70,7 +70,7 @@ export default () => {
 
     const handleFavClick = () => {
         setFavorited ( !favorited )
-        // Api.setFavorited( userInfo.id )
+        Api.setFavorite(userInfo.id)
     }
 
     return(
@@ -115,11 +115,11 @@ export default () => {
                         <LoadingIcon size="large" color="#000000" />
                     }
 
-                    {userInfo.services && 
+                    {userInfo.profissao && 
                     <ServiceArea>
                         <ServicesTitle>Lista de serviços</ServicesTitle>
                     
-                        {userInfo.services.map((item, key) => (
+                        {userInfo.profissao.map((item, key) => (
                             <ServiceItem key={key}>
                                 <ServiceInfo>
                                     <ServiceName>{item.profissao}</ServiceName>
@@ -132,7 +132,7 @@ export default () => {
                          ))}
 
                     </ServiceArea>
-                    }
+                     }
 
                     {userInfo.testimonials && userInfo.testimonials.lenght> 0 &&
                     <TestimonialArea>

@@ -19,6 +19,7 @@ export default () => {
     const navigation = useNavigation()
 
     const handleClickOffertService = () => {
+        
         navigation.reset({
             routes: [{name: 'MainTab'}]
         })

@@ -29,6 +29,9 @@ import CadeadoIcon from '../../assets/cadeado.svg'
 export default () => {
     const {state:user} = useContext(UserContext)
     const navigation = useNavigation()
+    const [nameField, setNameField] = useState('')
+    const [emailField, setEmailField] = useState('')
+    const [passwordField, setPasswordField] = useState('')
     // const route = useRoute()
 
     // const[UserInfo, setUserInfo] = useState({
@@ -62,18 +65,21 @@ export default () => {
                         IconSvg={ProfileIcon}
                         placeholder="Editar Nome"
                         placeholderTextColor="#ccc"
+                        value={nameField}
                     />
 
                     <SignEmail 
                         IconSvg={EmailIcon}
                         placeholder="Editar Email"
-                        placeholderTextColor="#ccc"                     
+                        placeholderTextColor="#ccc"    
+                        value={emailField}                 
                     />
 
                     <SignPassword 
                         IconSvg={CadeadoIcon}
                         placeholder="Editar Senha"
                         placeholderTextColor="#ccc"
+                        value={passwordField}
                     />
 
                     <SignEndereco 

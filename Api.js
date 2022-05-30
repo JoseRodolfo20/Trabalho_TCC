@@ -42,6 +42,21 @@ export default {
         return json
     },
 
+    logout: async () => {
+        const token = await AsyncStorage.getItem('token')
+
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/logout`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token})
+        });
+        const json = await req.json()
+        return json
+    },
+
     getSearch: async (search) => {
         const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/profissions`, {
             method: 'POST',
@@ -49,7 +64,7 @@ export default {
                 Accept: 'aplication/json',
                 'Content-Type': 'aplication/json'
             },
-            body: JSON.stringify({search})
+            body: JSON.stringify({search: search})
         })
         const json = await req.json()
         return json
@@ -66,6 +81,19 @@ export default {
 
     getInfoUser: async () => {
         const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers`)
+        const json = await req.json()
+        return json
+    },
+
+    setFavorite: async (workersId) => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/favoritos`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({workers:workersId})
+        });
         const json = await req.json()
         return json
     }

@@ -12,8 +12,8 @@ export const InfoUser =  styled.View`
 `;
 
 export const UserAvatar =  styled.Image`
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     border-radius: 50px;
     margin-top: 10%;
     margin-left: 30px;
@@ -23,56 +23,57 @@ export const UserAvatar =  styled.Image`
     background-color: #ccc;
 `;
 
-export const UserName = styled.View`
-    width: 55%;
-    height: 80px;
-    top: -35%;
-    margin-left: 40%;
-    font-size: 10px;
+export const UserName = styled.Text`
+    font-size: 22px;
+    width: 50%;
+    top: -37%;
+    margin-left: 48%;
     color: #ffffff;
-    border: 3px solid red;
-    height: 20px;
+    height: 40px;
     justify-content: center;
     align-items: center;
 
 `;
 
 export const SignEditProfile = styled.TouchableOpacity`
-    height: 35px;
+    height: 65px;
     padding: 3px;
     align-items: center;
     justify-content: flex-start;
     border-radius: 5px;
     flex-direction: row;
     margin-top: 20px;
-    width: 90%;
+    width: 80%;
     margin-left: 40px;
+    background-color: #3b8952;
 `;
 
 export const EditProfile = styled.Text`
-    font-size: 18px;
+    font-size: 23px;
     color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
 `;
 
 export const SignOfertService = styled.TouchableOpacity`
-    height: 35px;
+    height: 65px;
     padding: 3px;
     align-items: center;
     justify-content: flex-start;
     border-radius: 5px;
     flex-direction: row;
     margin-top: 20px;
-    width: 90%;
+    width: 80%;
     margin-left: 40px;
+    background-color: #3b8952;
 `;
 
 export const OfertServiceText = styled.Text`
-    font-size: 18px;
+    font-size: 23px;
     color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: center;
 `;
 
 export const CustomButton = styled.TouchableOpacity`
@@ -84,4 +85,10 @@ export const CustomButton = styled.TouchableOpacity`
     margin-top:10px;
     width: 60px;
     margin-left: 80%;
+`;
+
+export const CustomButtonText = styled.Text`
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
 `;
