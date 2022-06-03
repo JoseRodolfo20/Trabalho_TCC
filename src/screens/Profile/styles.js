@@ -6,6 +6,10 @@ export const Container = styled.SafeAreaView`
     background-color: #1c232e;
 `;
 
+export const Scroller = styled.ScrollView`
+    flex: 1;
+`;
+
 export const InfoUser =  styled.View`
     margin-left: 20px;
     justify-content: space-between;
@@ -33,6 +37,26 @@ export const UserName = styled.Text`
     justify-content: center;
     align-items: center;
 
+`;
+
+export const SignServiceRequest = styled.TouchableOpacity`
+    height: 65px;
+    padding: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 40px;
+    background-color: #3b8952;
+`;
+
+export const ServiceRequestText = styled.Text`
+    font-size: 23px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
 `;
 
 export const SignEditProfile = styled.TouchableOpacity`
@@ -76,6 +100,28 @@ export const OfertServiceText = styled.Text`
     text-align: center;
 `;
 
+export const SignHistoryServices = styled.TouchableOpacity`
+    height: 65px;
+    padding: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: 40px;
+    background-color: #3b8952;
+`;
+
+export const HistoryServicesText = styled.Text`
+    font-size: 23px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+`;
+
 export const CustomButton = styled.TouchableOpacity`
     height: 50px;
     background-color: #3b8952;
@@ -87,8 +133,8 @@ export const CustomButton = styled.TouchableOpacity`
     margin-left: 80%;
 `;
 
-export const CustomButtonText = styled.Text`
-    font-size: 14px;
-    color: #fff;
-    font-weight: bold;
-`;
+// export const CustomButtonText = styled.Text`
+//     font-size: 14px;
+//     color: #fff;
+//     font-weight: bold;
+// `;

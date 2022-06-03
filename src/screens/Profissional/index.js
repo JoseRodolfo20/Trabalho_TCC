@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import Swiper from 'react-native-swiper'
 
 import Stars from '../../components/Stars'
+import ProfissionalModal from '../../components/ProfissionalModal'
 
 import FavoriteFullIcon from '../../assets/favorite_full.svg'
 import FavoriteIcon from '../../assets/favorites.svg'
@@ -62,6 +63,8 @@ export default () => {
 
     const [loading, setLoading] = useState(false)
     const [favorited, setFavorited] = useState(false)
+    const [selectedService, setSelectedService] = useState(null)
+    const [showModal, setShowModal] = useState(false)
 
 
     const handleBackButton = () => {
@@ -71,6 +74,11 @@ export default () => {
     const handleFavClick = () => {
         setFavorited ( !favorited )
         Api.setFavorite(userInfo.id)
+    }
+
+    const handleServiceChoose = (key) => {
+        setSelectedService(key)
+        setShowModal(true)
     }
 
     return(
@@ -115,16 +123,16 @@ export default () => {
                         <LoadingIcon size="large" color="#000000" />
                     }
 
-                    {userInfo.profissao && 
+                    {userInfo.services && 
                     <ServiceArea>
                         <ServicesTitle>Lista de serviços</ServicesTitle>
                     
-                        {userInfo.profissao.map((item, key) => (
+                        {userInfo.services.map((item, key) => (
                             <ServiceItem key={key}>
                                 <ServiceInfo>
                                     <ServiceName>{item.profissao}</ServiceName>
-                                    <ServicePrice>R$ {item.price}</ServicePrice>
-                                    <ServiceChooseButton>
+                                    <ServicePrice>R$ {item.valor_hora} </ServicePrice>
+                                    <ServiceChooseButton onPress={() => handleServiceChoose(key)}>
                                         <ServiceChooseBtnText>Agendar</ServiceChooseBtnText>
                                     </ServiceChooseButton>
                                 </ServiceInfo>
@@ -160,6 +168,14 @@ export default () => {
             <BackButton onPress={handleBackButton}>
                 <BackIcon width="25" height="25" fill="#ffffff" />
             </BackButton>
+
+            <ProfissionalModal 
+                show={showModal}
+                setShow={setShowModal}
+                user={userInfo}
+                service={selectedService}
+            />
+
         </Container>
     )
 }

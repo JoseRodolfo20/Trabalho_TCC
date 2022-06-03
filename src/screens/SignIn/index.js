@@ -24,7 +24,7 @@ import EmailIcon from '../../assets/email.svg'
 import CadeadoIcon from '../../assets/cadeado.svg'
 
 export default () => {
-    const { dispatch: UserDispatch } = useContext(UserContext)
+    // const { dispatch: UserDispatch } = useContext(UserContext)
     const navigation = useNavigation()
 
     const [emailField, setEmailField] = useState('')
@@ -38,12 +38,12 @@ export default () => {
             if(json.token){              
                 await AsyncStorage.setItem('token', json.token)
 
-                UserDispatch({
-                    type: 'setFotoUsuario',
-                    payload: {
-                        fotoUsuario: json.Array.fotoUsuario
-                    }
-                })
+                // UserDispatch({
+                //     type: 'setFotoUsuario',
+                //     payload: {
+                //         fotoUsuario: json.data.fotoUsuario
+                //     }
+                // })
 
                 navigation.reset({
                     routes: [{name: 'MainTab'}]

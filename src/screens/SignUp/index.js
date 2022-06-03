@@ -26,27 +26,38 @@ export default () => {
     const [emailField, setEmailField] = useState('')
     const [passwordField, setPasswordField] = useState('')
 
-    // const handleSignClick = async () => {
-    //     if(nameField != '' && emailField != '' && passwordField != ''){
+    const handleSignClick = async () => {
+        if(nameField != '' && emailField != '' && passwordField != ''){
 
-    //         let res = await Api.signUp(nameField, emailField, passwordField)
-    //         console.log(res)
-    //         if(res.token){
-    //             alert('Deu certo!')
-    //         }else{
-    //             alert('Nome, Email e/ou Senha erradas!')
-    //         }
+            let res = await Api.signUp(nameField, emailField, passwordField)
+            console.log(res)
+            if(res.token){
+                await AsyncStorage.setItem('token', json.token)
 
-    //     }else{
-    //         alert('Preencha todos os campos!')
-    //     }
-    // }
+                // UserDispatch({
+                //     type: 'setFotoUsuario',
+                //     payload: {
+                //         fotoUsuario: json.data.fotoUsuario
+                //     }
+                // })
 
-    const handleSignClick = () => {
-        navigation.reset({
-            routes: [{name: 'MainTab'}]
-        })
+                navigation.reset({
+                    routes: [{name: 'MainTab'}]
+                })
+            }else{
+                alert('Nome, Email e/ou Senha erradas!')
+            }
+
+        }else{
+            alert('Preencha todos os campos!')
+        }
     }
+
+    // const handleSignClick = () => {
+    //     navigation.reset({
+    //         routes: [{name: 'MainTab'}]
+    //     })
+    // }
 
     const handleMessageButtonClick = () => {
         navigation.reset({

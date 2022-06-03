@@ -33,15 +33,19 @@ export default () => {
         getProf()
     }, []);
 
-    const getSearch = async () => {
-        let res = await Api.getSearch()
+    // const getSearch = async () => {
+    //     let res = await Api.getSearch()
 
-            setSearch(res)
+    //         setSearch(res)
+    // }
+
+    // useEffect(() => {
+    //     getSearch()
+    // }, []);
+
+    function buscar(search){
+        setList(Array.filter((d) => d.profissao.includes(search)))
     }
-
-    useEffect(() => {
-        getSearch()
-    }, []);
 
     return(
         <Container>
@@ -51,7 +55,8 @@ export default () => {
                         placeholder="Pesquise Aqui"
                         placeholderTextColor="#FFFFFF"
                         value={search}
-                        onChangeText={(t) => setSearch(t)}
+                        onChangeText={(search) =>setSearch(search)}
+                        autoCapitalize="none"
                     />
                     <SearchButton>
                         <SearchIcon width="26" height="26" fill="#FFFFFF"/>

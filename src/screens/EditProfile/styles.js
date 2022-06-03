@@ -4,6 +4,8 @@ import styled from "styled-components/native";
 export const Container = styled.SafeAreaView`
     flex: 1;
     background-color: #1c232e;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const Scroller = styled.ScrollView`
@@ -105,4 +107,11 @@ export const CustomEditButtonText = styled.Text`
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
+`;
+
+export const BackButton = styled.TouchableOpacity`
+    position: absolute;
+    left: 15;
+    top: 35;
+    z-index: 9;
 `;

@@ -1,10 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-const BASE_API = 'https://a26d-200-149-29-51.sa.ngrok.io'
+const BASE_API = 'https://756b-200-149-29-51.sa.ngrok.io'
 
 export default {
     checkToken: async (token) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/auth/refresh`, {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/auth/refresh`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -17,7 +17,7 @@ export default {
     },
 
     signIn: async (email, pass) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/login`, {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios/login`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -30,7 +30,7 @@ export default {
     },
 
     signUp: async (nome, email, pass) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/user`, {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -45,7 +45,7 @@ export default {
     logout: async () => {
         const token = await AsyncStorage.getItem('token')
 
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/logout`, {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios/logout`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -58,7 +58,8 @@ export default {
     },
 
     getSearch: async (search) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/profissions`, {
+        // const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/profissions`, {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios/profissions`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -74,25 +75,86 @@ export default {
     getProf: async () => {
         const token = await AsyncStorage.getItem('token')
         
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers?token=${token}`)
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios?token=${token}`)
         const json = await req.json()  
         return json
     },
 
-    getInfoUser: async () => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers`)
-        const json = await req.json()
+    getProfissonal: async (id) => {
+        const token = await AsyncStorage.getItem('token')
+
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios/${id}?token=${token}`)
+        const json = await req.json()  
         return json
     },
 
-    setFavorite: async (workersId) => {
-        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/workers/favoritos`, {
+    setFavorite: async () => {
+        const req = await fetch(`https://a26d-200-149-29-51.sa.ngrok.io/usuarios/favoritos`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({workers:workersId})
+            body: JSON.stringify({})
+        });
+        const json = await req.json()
+        return json
+    },
+
+    editProfile: async (id, nome, email, pass, endereco, fotoUsuario) => {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+                nome: nome,
+                email: email,
+                pass: pass,
+                endereco: endereco,
+                fotoUsuario: fotoUsuario
+                
+            })
+        });
+        const json = await req.json()
+        return json
+    },
+
+    offerService: async (id, profissao, preco, endereco, restricoes) => {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id,
+                profissao,
+                preco,
+                endereco,
+                restricoes               
+            })
+        });
+        const json = await req.json()
+        return json
+    },
+
+    requestService: async (id_usuario, servico_necessario, dia, hora, detalhes_servico_necessario) => {
+        const req = await fetch(`https://756b-200-149-29-51.sa.ngrok.io/usuarios`, {
+            method: 'POST',
+            headers: {
+                Accept: 'aplication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_usuario,
+                servico_necessario,
+                dia,
+                hora,
+                detalhes_servico_necessario               
+            })
         });
         const json = await req.json()
         return json

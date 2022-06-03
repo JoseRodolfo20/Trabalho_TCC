@@ -73,4 +73,5 @@ export default ({Array}) => {
       </InfoArea>
     </Area>
   )
+
 }

@@ -14,24 +14,32 @@ import {
     SignEndereco,
 
     EditButton,
-    CustomEditButtonText
+    CustomEditButtonText,
+
+    BackButton
 
 } from "./styles";
 
+import Api from '../../../Api'
+
+import BackIcon from '../../assets/back.svg'
 import { UserContext } from '../../contexts/UserContext'
-// import SignEditInput from "../../components/SignEditInput";
+// import SignEditInput from '../../components/SignEditInput'
 
 import EditImageIcon from '../../assets/editImage.svg'
 import ProfileIcon from '../../assets/profile.svg'
 import EmailIcon from '../../assets/email.svg'
 import CadeadoIcon from '../../assets/cadeado.svg'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default () => {
     const {state:user} = useContext(UserContext)
     const navigation = useNavigation()
+    const [fotoField, setFotoField] = useState('')
     const [nameField, setNameField] = useState('')
     const [emailField, setEmailField] = useState('')
     const [passwordField, setPasswordField] = useState('')
+    const [locationField, setLocationField] = useState('')
     // const route = useRoute()
 
     // const[UserInfo, setUserInfo] = useState({
@@ -43,7 +51,25 @@ export default () => {
     // })
 
 
-    const handleEditClick = () => {
+    const handleEditClick = async() => {
+        if(nameField != '' && emailField != '' && passwordField != '' && locationField != ''){
+            let json = await Api.editProfile(nameField, emailField, passwordField, locationField)
+            if(json.token){
+                await AsyncStorage.setItem('token', json.token)
+
+                alert('Dados alterados com Sucesso!')
+
+                navigation.reset({
+                    routes: [{name: 'SignIn'}]
+                })
+            }
+
+        }else{
+            alert('Preencha todos os campos!')
+        }
+    }
+
+    const handleBackButton = () => {
         navigation.reset({
             routes: [{name: 'MainTab'}]
         })
@@ -59,6 +85,8 @@ export default () => {
                 <InputArea>
                     <Profile /*source={{uri: UserInfo.fotoUsuario}}*/
                         IconSvg={EditImageIcon}
+                        value={fotoField}
+                        onChangeText={t=>setFotoField(t)}
                     />
 
                     <SignName
@@ -66,13 +94,15 @@ export default () => {
                         placeholder="Editar Nome"
                         placeholderTextColor="#ccc"
                         value={nameField}
+                        onChangeText={t=>setNameField(t)}
                     />
 
                     <SignEmail 
                         IconSvg={EmailIcon}
                         placeholder="Editar Email"
                         placeholderTextColor="#ccc"    
-                        value={emailField}                 
+                        value={emailField}  
+                        onChangeText={t=>setEmailField(t)}               
                     />
 
                     <SignPassword 
@@ -80,11 +110,15 @@ export default () => {
                         placeholder="Editar Senha"
                         placeholderTextColor="#ccc"
                         value={passwordField}
+                        onChangeText={t=>setPasswordField(t)}
+                        password={true}
                     />
 
                     <SignEndereco 
                         placeholder="Editar Localização"
                         placeholderTextColor="#ccc"
+                        value={locationField}
+                        onChangeText={t=>setLocationField(t)}
                     />
                 </InputArea>
 
@@ -93,6 +127,11 @@ export default () => {
                 </EditButton>
 
             </Scroller>
+
+            <BackButton onPress={handleBackButton}>
+                <BackIcon width="25" height="25" fill="#ffffff"/>
+            </BackButton>
+
         </Container>
     )
 }

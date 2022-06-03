@@ -8,6 +8,8 @@ import MainTab from './MainTab';
 import Profissional from '../screens/Profissional'
 import EditProfile from '../screens/EditProfile'
 import OfferService from '../screens/OfferService'
+import HistoryServices from '../screens/HistoryServices';
+import RequestService from '../screens/RequestService'
 
 const Stack = createStackNavigator()
 
@@ -25,5 +27,7 @@ export default () => (
         <Stack.Screen name='Profissional' component={Profissional} />
         <Stack.Screen name='EditProfile' component={EditProfile} />
         <Stack.Screen name='OfferService' component={OfferService} />
+        <Stack.Screen name='HistoryServices' component={HistoryServices} />
+        <Stack.Screen name='RequestService' component={RequestService} />
     </Stack.Navigator>
 );
