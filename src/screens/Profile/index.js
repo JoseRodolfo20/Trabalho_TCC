@@ -23,8 +23,8 @@ import LogoutIcon from '../../assets/logout.svg'
 import Api from '../../../Api';
 import { UserContext } from '../../contexts/UserContext'
 
-export default ({Array}) => {
-  const {state: user} = useContext(UserContext)
+export default ({user}) => {
+  // const {state: user} = useContext(UserContext)
   const[list, setList] = useState([])
   const route = useRoute()
 
@@ -93,7 +93,7 @@ export default ({Array}) => {
       
         <InfoUser>
           <UserAvatar /*source={{uri: userInfo.fotoUsuario}}*/ />
-          <UserName>José Rodolfo</UserName>
+          <UserName>Nome do usuario logado</UserName>
         </InfoUser>
 
       <Scroller>

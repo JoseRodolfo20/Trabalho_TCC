@@ -108,7 +108,7 @@ export const ServiceItem =  styled.View`
 `;
 
 export const ServicesTitle =  styled.Text`
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
     color: #1c232e;
     margin-left: 30px;
@@ -120,26 +120,29 @@ export const ServiceInfo =  styled.View`
 `;
 
 export const ServiceName =  styled.Text`
-    font-size: 16px;
+    margin-top: 25%;
+    font-size: 20px;
     font-weight: bold;
     color: #1c232e;
 `;
 
 export const ServicePrice =  styled.Text`
-    font-size: 14px;
+    font-size: 18px;
     color: #1c232e;
 `;
 
 export const ServiceChooseButton =  styled.TouchableOpacity`
     background-color: #3b8952;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 20px 20px;
+    margin-top: 35%;
 `;
 
-export const ServiceChooseBtnText =  styled.View`
-    font-size: 14px;
+export const ServiceChooseBtnText =  styled.Text`
+    font-size: 20px;
     font-weight: bold;
     color: #ffffff;
+    text-align: center;
 `;
 
 export const TestimonialArea =  styled.View`

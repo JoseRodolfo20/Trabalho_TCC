@@ -27,6 +27,10 @@ const UserName = styled.Text`
   font-size: 15px;
   font-weight: bold;
 `;
+const UserProf = styled.Text`
+  font-size: 10px;
+  font-weight: bold;
+`;
 
 const UserLocation = styled.Text`
   font-size: 10px;
@@ -54,6 +58,7 @@ export default ({Array}) => {
     navigation.navigate('Profissional', {
       id: Array.id,
       nome: Array.nome,
+      profissao: Array.profissao,
       fotoUsuario: Array.fotoUsuario,
       endereco: Array.endereco,
       stars: Array.stars
@@ -65,6 +70,7 @@ export default ({Array}) => {
       <Photo source={{uri: Array.fotoUsuario}}/>
       <InfoArea>
         <UserName>{Array.nome}</UserName>
+        <UserProf>{Array.profissao}</UserProf>
         <UserLocation>{Array.endereco}</UserLocation>
         <Stars stars={Array.stars} showNumber={true}/>       
         <SeeProfileButton>

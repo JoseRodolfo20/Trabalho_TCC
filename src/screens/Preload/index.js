@@ -9,51 +9,51 @@ import { UserContext } from "../../contexts/UserContext";
 import Api from "../../../Api";
 
 export default () => {
-    // const { dispatch: UserDispatch } = useContext(UserContext)
+    const { dispatch: UserDispatch } = useContext(UserContext)
     const navigation = useNavigation()
+
+    useEffect(() => {
+        const checkToken = async () => {
+            let token = await AsyncStorage.getItem('token');
+            if(token){
+                //validar o token
+                let res = await Api.checkToken(token)
+                if(res.token){
+
+                    await AsyncStorage.setItem('token', res.token)
+
+                    // UserDispatch({
+                    //     type: 'setFotoUsuario',
+                    //     payload: {
+                    //         fotoUsuario: res.data.fotoUsuario
+                    //     }
+                    // })
+    
+                    navigation.reset({
+                        routes: [{name: 'MainTab'}]
+                    })
+
+                }else{
+                    navigation.navigate('SignIn')
+                }
+            }else{
+                navigation.navigate('SignIn')
+            }
+        }
+        checkToken();
+    }, [])
 
     // useEffect(() => {
     //     const checkToken = async () => {
     //         const token = await AsyncStorage.getItem('token');
-    //         if(token !== null){
-    //             //validar o token
-    //             let res = await Api.checkToken(token)
-    //             if(res.token){
-
-    //                 await AsyncStorage.setItem('token', json.token)
-
-    //                 UserDispatch({
-    //                     type: 'setFotoUsuario',
-    //                     payload: {
-    //                         fotoUsuario: json.data.fotoUsuario
-    //                     }
-    //                 })
-    
-    //                 navigation.reset({
-    //                     routes: [{name: 'MainTab'}]
-    //                 })
-
-    //             }else{
-    //                 navigation.navigate('SignIn')
-    //             }
-    //         }else{
+    //         // if(token !== null){
+    //         //     //validar o token
+    //         // }else{
     //             navigation.navigate('SignIn')
-    //         }
+    //         //}
     //     }
     //     checkToken();
     // }, [])
-
-    useEffect(() => {
-        const checkToken = async () => {
-            const token = await AsyncStorage.getItem('token');
-            // if(token !== null){
-            //     //validar o token
-            // }else{
-                navigation.navigate('SignIn')
-            //}
-        }
-        checkToken();
-    }, [])
 
     return(
         <Container>

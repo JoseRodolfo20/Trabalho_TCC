@@ -56,6 +56,7 @@ export default () => {
     const [userInfo, setUserInfo] = useState({
         id: route.params.id,
         nome: route.params.nome,
+        profissao: route.params.profissao,
         fotoUsuario: route.params.fotoUsuario,
         endereco: route.params.endereco,
         stars: route.params.stars
@@ -76,8 +77,8 @@ export default () => {
         Api.setFavorite(userInfo.id)
     }
 
-    const handleServiceChoose = (key) => {
-        setSelectedService(key)
+    const handleServiceChoose = () => {
+        // setSelectedService(key)
         setShowModal(true)
     }
 
@@ -123,21 +124,21 @@ export default () => {
                         <LoadingIcon size="large" color="#000000" />
                     }
 
-                    {userInfo.services && 
+                    {userInfo.profissao && 
                     <ServiceArea>
                         <ServicesTitle>Lista de serviços</ServicesTitle>
                     
-                        {userInfo.services.map((item, key) => (
-                            <ServiceItem key={key}>
+                        
+                            <ServiceItem>
                                 <ServiceInfo>
-                                    <ServiceName>{item.profissao}</ServiceName>
-                                    <ServicePrice>R$ {item.valor_hora} </ServicePrice>
-                                    <ServiceChooseButton onPress={() => handleServiceChoose(key)}>
+                                    <ServiceName>{userInfo.profissao}</ServiceName>
+                                    <ServicePrice>R$</ServicePrice>
+                                    <ServiceChooseButton onPress={handleServiceChoose}>
                                         <ServiceChooseBtnText>Agendar</ServiceChooseBtnText>
                                     </ServiceChooseButton>
                                 </ServiceInfo>
                             </ServiceItem>
-                         ))}
+                         
 
                     </ServiceArea>
                      }

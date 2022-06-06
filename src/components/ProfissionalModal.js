@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
+import { Text, Linking } from  'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import ExpandIcon from '../assets/expand.svg'
+import CloseIcon from '../assets/close.svg'
 
 const Modal = styled.Modal`
 
@@ -89,7 +90,9 @@ export default ({ show, setShow, user, profissao }) => {
     }
 
     const handleFinishClick = () => {
-
+        return Linking.openURL(
+            "https://api.whatsapp.com/send?phone=5535999759109&text=Oi"
+        );
     }
 
     return(
@@ -102,7 +105,7 @@ export default ({ show, setShow, user, profissao }) => {
             <ModalArea>
                 <ModalBody>
                     <CloseButton onPress={handleCloseButton}>
-                        <ExpandIcon width="40" height="40" fill="#000000"/>
+                        <CloseIcon width="40" height="40" fill="#ffffff"/>
                     </CloseButton>
 
                     <ModalItem>
@@ -112,14 +115,14 @@ export default ({ show, setShow, user, profissao }) => {
                         </UserInfo>
                     </ModalItem>
 
-                    {profissao != null &&
+                    
                     <ModalItem>
                         <ServiceInfo>
                             <ServiceName>{user.profissao}</ServiceName>
-                            <ServicePrice>R$</ServicePrice>
+                            <ServicePrice>R$ {user.valor}</ServicePrice>
                         </ServiceInfo>
                     </ModalItem>
-                    }
+                    
 
                     <FinishButton onPress={handleFinishClick}>
                         <FinishButtonText>Agendar pelo Whatsapp</FinishButtonText>

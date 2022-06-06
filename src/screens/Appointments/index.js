@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import { Text } from "react-native";
 import{ 
     Container,

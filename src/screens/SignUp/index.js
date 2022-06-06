@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { 
     Container,
     InputArea,
@@ -32,7 +33,7 @@ export default () => {
             let res = await Api.signUp(nameField, emailField, passwordField)
             console.log(res)
             if(res.token){
-                await AsyncStorage.setItem('token', json.token)
+                await AsyncStorage.setItem('token', res.token)
 
                 // UserDispatch({
                 //     type: 'setFotoUsuario',
