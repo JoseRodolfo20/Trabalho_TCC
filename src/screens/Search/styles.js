@@ -8,18 +8,17 @@ export const Container = styled.SafeAreaView`
 
 export const Scroller = styled.ScrollView`
     flex: 1;
-    padding: 20px;
+    padding: 0 20px;
 `;
 
 export const SearchArea = styled.View`
     background-color: #3b8952;
-    height: 60px;
-    border-radius: 30px;
+    height: 40px;
+    border-radius: 20px;
     flex-direction: row;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 30px;
+    padding: 0 20px;
+    margin: 20px;
 `;
 
 export const SearchInput = styled.TextInput`
@@ -33,8 +32,19 @@ export const SearchButton = styled.TouchableOpacity`
     height: 24px;
 `;
 
-export const ListArea = styled.View`
+export const LoadingIncon = styled.ActivityIndicator`
     margin-top: 30px;
-    margin-bottom: 30px;
+`;
+
+export const EmptyWarning = styled.Text`
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    font-size: 14px;
+`;
+
+export const ListArea = styled.View`
+    margin-top: 20px;
+    margin-bottom: 20px;
 `;
 

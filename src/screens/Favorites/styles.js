@@ -8,18 +8,34 @@ export const Container = styled.SafeAreaView`
 
 export const Scroller = styled.ScrollView`
     flex: 1;
-    padding: 20px;
+    padding: 0 20px;
 `;
 
 export const HeaderArea = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    height: 50px;
+    justify-content: center;
+    padding: 0 20px;
 `;
 
 export const HeaderTitle = styled.Text`
-    width: 250px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
 `;
+
+export const LoadingIncon = styled.ActivityIndicator`
+    margin-top: 30px;
+`;
+
+export const EmptyWarning = styled.Text`
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    font-size: 14px;
+`;
+
+export const ListArea = styled.View`
+    margin-top: 20px;
+    margin-bottom: 20px;
+`;
+

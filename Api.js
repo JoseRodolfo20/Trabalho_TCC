@@ -57,18 +57,12 @@ export default {
         return json
     },
 
-    getSearch: async (search) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/profissions`, {
-            method: 'POST',
-            headers: {
-                Accept: 'aplication/json',
-                'Content-Type': 'aplication/json'
-            },
-            body: JSON.stringify({search})
-        })
+    search: async(search) => {
+        const token = await AsyncStorage.getItem('token')
+
+        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/profissions?&q=${search}&token=${token}`)
         const json = await req.json()
         return json
-        
     },
 
     getProf: async () => {
@@ -83,6 +77,14 @@ export default {
         const token = await AsyncStorage.getItem('token')
 
         const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/${id}?token=${token}`)
+        const json = await req.json()  
+        return json
+    },
+
+    getFavorites: async () => {
+        const token = await AsyncStorage.getItem('token')
+        
+        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/favoritos?token=${token}`)
         const json = await req.json()  
         return json
     },

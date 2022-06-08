@@ -6,7 +6,9 @@ import{
     SearchArea,
     SearchInput,
     SearchButton,
-    ListArea
+    LoadingIncon,
+    ListArea,
+    EmptyWarning
 } from './styles'
 
 import Api from "../../../Api";
@@ -16,75 +18,84 @@ import SearchIcon from '../../assets/search.svg'
 // import { Keyboard } from "react-native-web";
 
 export default () => {
-    const link = `https://6ff9-138-121-21-56.sa.ngrok.io/usuarios`
 
     const[list, setList] = useState([])
-    const[search, setSearch] = useState('')
+    const[searchText, setSearchText] = useState('')
+    const[emptyList, setEmptyList] = useState(false)
+    const[loading, setLoading] = useState(false)
 
-    const getProf = async () => {
+    // const solicitar = async (search) => {
+    //     Keyboard.dismiss()
+        
+    //     try {
+    //         const resultados = await Api.getSearch(search)
+    //         console.log(resultados)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+
+    const searchProf = async () => {
+        setEmptyList(false)
+        setLoading(true)
         setList([])
 
-        let res = await Api.getProf()
-        console.log(res.error)
-        
-            setList(res)
-        
-    }
-
-    useEffect(() => {
-        getProf()
-    }, []);
-
-    // const getSearch = async () => {
-    //     let res = await Api.getSearch()
-
-    //         setSearch(res)
-    // }
-
-    // useEffect(() => {
-    //     getSearch()
-    // }, []);
-
-    // function buscar(search){
-    //     setList(Array.filter((d) => d.profissao.includes(search)))
-    // }
-
-    const solicitar = async (search) => {
-        Keyboard.dismiss()
-        
-        try {
-            const resultados = await Api.getSearch(search)
-            console.log(resultados)
-        } catch (err) {
-            console.log(err)
+        if(searchText != ''){
+            let res = await Api.search(searchText)
+            if(res.error == ''){
+                if(res.list.lenght > 0){
+                setList(res.list)
+                }else{
+                    setEmptyList(true)
+                }
+            }else{
+                alert('ERRO: ' +res.error)
+            }
         }
+
+        setLoading(false)
+
     }
 
     return(
         <Container>
-            <Scroller>
-                <SearchArea value={search}>
+            
+                <SearchArea>
                     <SearchInput 
-                        placeholder="Pesquise Aqui"
+                        placeholder="Digite a profissão"
                         placeholderTextColor="#FFFFFF"
-                        value={search}
-                        onChangeText={(search) =>setSearch(search)}
                         autoCapitalize="none"
+                        value={searchText}
+                        onChangeText={t=>setSearchText(t)}
+                        onEndEditing={searchProf}
+                        returnKeyType="search"
+                        autoFocus
+                        selectTextOnFocus
                     />
                     <SearchButton>
                         <SearchIcon width="26" height="26" fill="#FFFFFF"
-                            onPress={() => {solicitar(search)}}
+                            
                         />
                     </SearchButton>
                 </SearchArea>
 
-                <ListArea>
-                        {list.map((item, k)=>(
+                <Scroller>
+
+                    {loading &&
+                        <LoadingIncon size="large" color="#ffffff"/>
+                    }
+
+                    {emptyList &&
+                        <EmptyWarning>Não achamos a profissão "{searchText}" </EmptyWarning>
+                    }
+
+                    <ListArea>
+                        {list.map((item, k) => (
                             <List key={k} Array={item}/>
                         ))}
-                </ListArea>
+                    </ListArea>
 
-            </Scroller>
+                </Scroller>
         </Container>
     )
 }

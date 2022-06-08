@@ -1,5 +1,4 @@
 import react, { useState, useEffect } from "react";
-import { Text } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native'
 import Swiper from 'react-native-swiper'
 
@@ -12,7 +11,7 @@ import BackIcon from '../../assets/back.svg'
 import NavPrevIcon from '../../assets/nav_prev.svg'
 import NavNextIcon from '../../assets/nav_next.svg'
 
-import{ 
+import { 
     Container,
     Scroller,
     FakeSwiper,
