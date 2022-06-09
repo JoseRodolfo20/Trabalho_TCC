@@ -4,39 +4,39 @@ const BASE_API = 'https://756b-200-149-29-51.sa.ngrok.io'
 
 export default {
     checkToken: async (token) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/token`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/token`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({token})
+            body: JSON.stringify({ token })
         });
         const json = await req.json()
         return json
     },
 
     signIn: async (email, pass) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/login`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/login`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, pass})
+            body: JSON.stringify({ email, pass })
         });
         const json = await req.json()
         return json
     },
 
-    signUp: async (nome, email, pass) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios`, {
+    signUp: async (nome, email, pass, endereco) => {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({nome, email, pass})
+            body: JSON.stringify({ nome, email, pass })
         });
         const json = await req.json()
         return json
@@ -45,50 +45,55 @@ export default {
     logout: async () => {
         const token = await AsyncStorage.getItem('token')
 
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/logout`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/logout`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({token})
+            body: JSON.stringify({ token })
         });
         const json = await req.json()
         return json
     },
 
     getSearch: async (search) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/profissions`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/profissions`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
                 'Content-Type': 'aplication/json'
             },
-            body: JSON.stringify({search})
+            body: JSON.stringify({ search })
         })
         const json = await req.json()
         return json
-        
+
     },
 
     getProf: async () => {
         const token = await AsyncStorage.getItem('token')
-        
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios?token=${token}`)
-        const json = await req.json()  
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios`, {
+            method: 'GET',
+            headers: {
+                token: token
+            }
+
+        })
+        const json = await req.json()
         return json
     },
 
     getProfissonal: async (id) => {
         const token = await AsyncStorage.getItem('token')
 
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/${id}?token=${token}`)
-        const json = await req.json()  
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/${id}?token=${token}`)
+        const json = await req.json()
         return json
     },
 
     setFavorite: async () => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios/favoritos`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios/favoritos`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -101,7 +106,7 @@ export default {
     },
 
     editProfile: async (id, nome, email, pass, endereco, fotoUsuario) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -114,7 +119,7 @@ export default {
                 pass: pass,
                 endereco: endereco,
                 fotoUsuario: fotoUsuario
-                
+
             })
         });
         const json = await req.json()
@@ -122,7 +127,7 @@ export default {
     },
 
     offerService: async (id, profissao, preco, endereco, restricoes) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -133,7 +138,7 @@ export default {
                 profissao,
                 preco,
                 endereco,
-                restricoes               
+                restricoes
             })
         });
         const json = await req.json()
@@ -141,7 +146,7 @@ export default {
     },
 
     requestService: async (id_usuario, servico_necessario, dia, hora, detalhes_servico_necessario) => {
-        const req = await fetch(`https://6ff9-138-121-21-56.sa.ngrok.io/usuarios`, {
+        const req = await fetch(`https://e16f-138-121-21-56.sa.ngrok.io/usuarios`, {
             method: 'POST',
             headers: {
                 Accept: 'aplication/json',
@@ -152,7 +157,7 @@ export default {
                 servico_necessario,
                 dia,
                 hora,
-                detalhes_servico_necessario               
+                detalhes_servico_necessario
             })
         });
         const json = await req.json()

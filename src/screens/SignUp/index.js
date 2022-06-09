@@ -30,10 +30,16 @@ export default () => {
     const handleSignClick = async () => {
         if(nameField != '' && emailField != '' && passwordField != ''){
 
-            let res = await Api.signUp(nameField, emailField, passwordField)
-            console.log(res)
-            if(res.token){
-                await AsyncStorage.setItem('token', res.token)
+            await Api.signUp(nameField, emailField, passwordField).then((res)=>{
+                AsyncStorage.setItem('token', res.token)
+                navigation.reset({
+                    routes: [{name: 'MainTab'}]
+                })
+                
+            }).catch((err)=>{
+                alert(err)
+            })
+
 
                 // UserDispatch({
                 //     type: 'setFotoUsuario',
@@ -41,13 +47,6 @@ export default () => {
                 //         fotoUsuario: json.data.fotoUsuario
                 //     }
                 // })
-
-                navigation.reset({
-                    routes: [{name: 'MainTab'}]
-                })
-            }else{
-                alert('Nome, Email e/ou Senha erradas!')
-            }
 
         }else{
             alert('Preencha todos os campos!')

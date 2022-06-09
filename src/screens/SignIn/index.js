@@ -33,8 +33,21 @@ export default () => {
     const handleSignClick = async () => {
         if(emailField != '' && passwordField != ''){
 
-            let json = await Api.signIn(emailField, passwordField)
-            console.log(json)
+            await Api.signIn(emailField, passwordField).then((response)=>{
+                if(response.token){
+                AsyncStorage.setItem('token', response.token)
+                navigation.reset({
+                    routes: [{name: 'MainTab'}]
+                })
+            } else {
+                alert('Email ou senha incorretos')
+            }
+            }).catch((err)=>{
+                alert('Não foi possível fazer login')
+            })
+
+            /*
+           
             if(json.token){              
                 await AsyncStorage.setItem('token', json.token)
 
@@ -48,10 +61,12 @@ export default () => {
                 navigation.reset({
                     routes: [{name: 'MainTab'}]
                 })
+              
 
             }else{
                 alert('Email e/ou senha errados!')
             }
+            */
 
         }else{
             alert('Preencha todos os campos!')
