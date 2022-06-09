@@ -65,6 +65,7 @@ export default ({Array}) => {
     })
   }
 
+
   return(
     <Area onPress={handleClick}>
       <Photo source={{uri: Array.fotoUsuario}}/>

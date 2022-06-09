@@ -40,6 +40,7 @@ export default () => {
         setLoading(true)
         setList([])
 
+
         if(searchText != ''){
             let res = await Api.search(searchText)
             if(res.error == ''){
