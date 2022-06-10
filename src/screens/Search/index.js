@@ -15,70 +15,36 @@ import Api from "../../../Api";
 
 import List from '../../components/FlatList'
 import SearchIcon from '../../assets/search.svg'
-// import { Keyboard } from "react-native-web";
+import DropDown from "../../components/FilterComponent";
+// import Api from "../../../Api";
 
 export default () => {
+    let profissao = [{id: 1, profissao: 'Pedreiro'}, {id: 2, profissao: 'Pintor'}, {id: 3, profissao: 'Eletricista'}, {id: 3, profissao: 'Vidraceiro'}, {id: 3, profissao: 'Serralheiro'}]
 
     const[list, setList] = useState([])
     const[searchText, setSearchText] = useState('')
     const[emptyList, setEmptyList] = useState(false)
     const[loading, setLoading] = useState(false)
+    const[selectedItem, setSelectedItem] = useState(null)
 
-    // const solicitar = async (search) => {
-    //     Keyboard.dismiss()
-        
-    //     try {
-    //         const resultados = await Api.getSearch(search)
-    //         console.log(resultados)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    const onSelect = (item) => {
+        setSelectedItem(item)
+    }
 
     const searchProf = async () => {
-        setEmptyList(false)
-        setLoading(true)
-        setList([])
-
-
-        if(searchText != ''){
-            let res = await Api.search(searchText)
-            if(res.error == ''){
-                if(res.list.lenght > 0){
-                setList(res.list)
-                }else{
-                    setEmptyList(true)
-                }
-            }else{
-                alert('ERRO: ' +res.error)
-            }
-        }
-
-        setLoading(false)
 
     }
 
     return(
         <Container>
-            
-                <SearchArea>
-                    <SearchInput 
-                        placeholder="Digite a profissão"
-                        placeholderTextColor="#FFFFFF"
-                        autoCapitalize="none"
-                        value={searchText}
-                        onChangeText={t=>setSearchText(t)}
-                        onEndEditing={searchProf}
-                        returnKeyType="search"
-                        autoFocus
-                        selectTextOnFocus
-                    />
-                    <SearchButton>
-                        <SearchIcon width="26" height="26" fill="#FFFFFF"
-                            
-                        />
-                    </SearchButton>
-                </SearchArea>
+
+            <DropDown 
+                value={selectedItem}
+                data={profissao}
+                onSelect={onSelect}
+            />
+
+                
 
                 <Scroller>
 
